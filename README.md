@@ -1,91 +1,106 @@
-# vs-code-setup
-Setup for VS code projects like [Arjan Codes](https://youtu.be/PwGKhvqJCQM?si=iykasikAMq893Uf-)
+# BRES + Lightcast Data Analysis Project: West of England Industry Insights Pack
 
-This is for a VS Code project template that includes a virtual environment  (.venv), default python packages, and some recommended extensions. The template is for Python projects with a focus on data analysis, but can be adapted for other languages.
+**Goal:** Build a high-perfromance Python workflow that automatically produces analysis and interactive visuals of key West of England industries (using BRES 2024 and Lightcast job posting data). The final output will mirror the format and insights of the exisitng 'Industries Inisght Pack' that has previously been in a slide deck format. This project should leave code that can easily be lightly edited to reproduce insight packs yearly going forward.
 
-The .gitignore file is set up to ignore the virtual environment and other common files that should not be committed to the repository. It also includes common R files and folders which should not be pushed to public repos.
+**stack:** Python, Polars, Plotly, python-pptx
+**Deadline Focus:** December 2025, following from 28th October BRES 2024 data being released
 
-## How to use:
+---
 
-Make sure you're logged in to your github account.
+## Phase 1 - Setup & Foundations
+*Goal: Get environment, tools and foundational knowledge ready for Polars + Plotly.*
 
-Click "Use this template" - Create a new repository.
+### Tasks and Checklist
+|Week  |Task| Status 
+**week1**
+|Week 1| Install Python, VS Code and set up Git + GitHub.| |
+|Week 1| Create Project project folder: 'bres-analysis/' with subfolders ('data/', 'scripts/', 'output/', etc.).| |
+|Week 1| **Install core libraries:** 'pip install polar plotly jupyterlap openpyxl python-pptx'| |
+**week2**
+|week 2| **Polars Practice:** In a Jupyter Notebook, practice importing a sample CSV/Excel file. | |
+|week 2| Use Polars syntax for **filtering, grouping, and aggregating** data. | |
+|week 2| **Plotly Practice:** Create a simple interactive Plotly Express chart (e.g., a bar chart or line plot). | | 
 
-Give the repo a name and description.
-Create the repository - it will be a new repository on your github account.
+### Expected Output
+* A functional Python development environment with the core libraries installed. 
+* A test Jupyter Notebook demonstarting basic Polars data wrangling and a simple interactive Plotly chart. 
 
-## Clone the repository
-Here you are essentially copying the repo you created from the template onto your local machine, and referencing it as a git repo that is linked to the GitHub repo.
+## Phase 2 - Data Acquistions & Exploration (Late Oct-Early Nov)
+* Goal: Load and explore the real BRES 2024 data and merge it with Lightcast data.*
 
-**It's best to avoid putting this on your OneDrive as I have found that sometimes VS Code can't properly access the .venv, possibly due to OneDrive's syncing, or long path names.** Because you are creating a github repo, this will always be backed up, so you don't need OneDrive for that.
+### Tasks & Checklist
+|Week  |Task| Status 
+**week 3**
+|week 3| **Data Download:** Download BRES 2024 data (from Nomis or ONS, dpeending on which leaves more flexibility for automating process once complete) and save raw files in 'data/raw'. | |
+|week 3| **Cleaning Script:** Begin 'scripts/clean_bres.py'. Use **Polars** to read the file, rename key columns (for consistency), filter the data to the West of England region, and inspect data types. | |
+|week 3| **Geographic mapping:** Document the geographical codes (or names) needed for the West of England CA and its unitary authorities (+ N Somerset) | |
+**week 4**
+|week 4| **Data Join:** Import Lightcast job posting data and write a Polars script to join it with cleaned BRES data (need to be xplored further, LLMs recommend using SIC coddes, but might not be a possible route with job posting data) | |
+|week 4| **Replicate Chart:** Use the combined dataset to recreate a simple chart from the Insight Pack (e.g, "Number of jobs by area") using **Plotly Express** | |
+|week 4| **Export test:** Export the Plotly chart as both interactive HTML file and a static PNG file. | |
 
-copy the URL of the repo from the Code button.
+### Expected Outcome
+* Cleaned and documented Polars dataframe from BRES 2024 data (to be reviewed if taking API approach)
+* Combined BRES + Lightcast dataset. 
+* The first successfully replivated, interactive insight chart using Plotly. 
 
-![](plots/git-clone.png)
+---
 
- then go your top level folder where you will do your analysis project in the **terminal** e.g. 
- `C:\Users\steve.crawshaw\projects`
+## Phase 3 - Modular Analysis & Resuseable Functions (Mid November)
+*Goal: Create reusable Polars functions to generate industry summaries and Plotly functions to generate standard charts.*
 
-and type 
 
-`git clone <hit CTRL+V to paste the URL>`
+### Tasks & Checklist 
+|Week  |Task| Status 
+**week 5**
+|week 5|**Analysis Utilities:** Create 'scripts/analysis_utils.py'. | |
+|week 5| Write a function to *filter by industry (SIC code)** and return a summary Polars DataFrame ready for plotting. | |
+**week 6**
+|week 6| **Plotting Functions:** Create Plotly functions to automate the key chart types for *all* industries: | |
+| | 1. Full-time vs Part-time Split Bar Chart | |
+| | 2. Employment Trend Over Time Line Chart (Regional vs. National) | |
+| | 3. Top 20 Sub-Industries Bar Chart (using SIC codes) | |
+|week 6| Run the analysis and function for 3-4 sectors (potentailly growth sectors)
 
-## Install uv
-(if you've already installed uv you can skip this step)<br>
-UV is a helpful tool for managing virtual environments and packages. It can be installed by running this line from powershell:
+### Expected Output
+* A modular Python file ('analysis_utils.py') with reusable Polars functions. 
+* A folder ('output/charts/') containing a set of reproducible, interactive Plotly charts for 3-4 key industries.
 
-`powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
+---
 
-## Install packages with uv
+## Phase 4 - Presentation & Automation (Late November/early December)
 
-We're going to use the [project - based approach](https://docs.astral.sh/uv/guides/projects/#running-commands) to virtual environments, which means that the .venv folder will be created in the project folder. UV uses the pyproject.toml file to track packages, and creates a lock file (uv.lock) to ensure that the exact versions of packages are recorded.
+### Tasks & Checklist
 
-It's good practice (but not essential) to set the name of the virtual environment folder to .venv as this is automatically ignored by git, and is a common convention. UV will do this for you. You need to set windows explorer to show hidden files to see the .venv folder. Don't edit the .venv folder directly.
+|Week  |Task| Status 
+**week 7**
+|week 7| **Presentation Automation:** Use 'python-pptx' to build a slide deck. | |
+|week 7| Programatically insert exported charts/tables into the PowerPoint slides, following agreed structure of the Insight Pack. | |
+|week 7| Generate a text summary (Markdown or Jupyter Notebook) of the key headlines for each industry. | |
+** week 8**
+|week 8| **Final Review:** Review output with colleagues. | |
+|week 8| **Documentation:** Update this 'README.md' and add comments to code for clarity and future maintenance. | |
+|week 8+| Begin exploring Plotly Dash or Streamlit or other route to publish further interactive work and/or dashboard on *quarto* or other publishable programme | |
 
-When the .venv is active in the terminal, you will see its name in brackets at the start of the terminal prompt, e.g. `(.venv) C:\Users\steve.crawshaw\projects\myproject>`. It's a good idea to set this name by changing the name of the project in pyproject.toml.
+### Expected Output 
+* A prototype automated PowerPoint deck with refreshed BRES-Lightcast visuals.
+* A final, working, and documented analysis pipeline (scripts/function). 
 
-In the root of your project folder you can type `code pyproject.toml` and manually change the name and description values. Alternatively there is a helper Powershell script you can run from the powershell terminal like this:
+---
 
-`.\update-project.ps1 -Name "my-awesome-project" -Description "This is my awesome project"`
+## Core Tech Stack
 
-Then when the .venv is active you should see:
+| Purpose | Tool / Library |
+| :--- | :--- |
+| **Data Manipulation** | **Polars** (`import polars as pl`) |
+| **Data Visualization** | **Plotly** (`plotly.express` for quick plots, `plotly.graph_objects` for fine control) |
+| **Excel I/O** | `openpyxl` (used by Polars for reading/writing Excel) |
+| **PowerPoint Automation** | **python-pptx** |
+| **Interactive Environment**| Jupyter Notebooks / JupyterLab |
+| **Version Control** | Git + GitHub |
 
-`(my-awesome-project) C:\Users\steve.crawshaw\projects\myproject`
-
-Which tells you that the .venv is active, and which project it is for.
-
-Make sure you're in the project folder in the terminal, and with one command you can create the default .venv and install the packages listed in the pyproject.toml file by typing:
-
-`uv sync`
-
-You should see a lot of packages being installed quite quickly.
-
-You can add new packages with `uv add <package>`, e.g. `uv add pandas`. You might need to do this as you develop code, and you get a message saying that a package is missing.
-
-UV looks at the pyproject.toml file to see what packages are listed there, and installs them into the .venv. It also updates the lock file (uv.lock) to ensure that the exact versions of packages are recorded. If your venv becomes corrupted you can simply delete it and use `uv sync` to recreate it. If you get a cryptic message about hardlink failures, you may need to delete the uv.lock file and then run `uv sync` again. If you get a message about cache you can do `uv cache clean`.
-
-Don't forget that **if you are running tools from the command line which are installed in the .venv** you need to activate the virtual environment first, e.g. on Windows Powershell:
-
-```
-.\.venv\Scripts\activate
-```
-on Windows Git bash:
-```
-source .venv/Scripts/activate
-```
-on Linux or Mac:
-```
-source .venv/bin/activate
-```
-## Selecting the Python interpreter in VS Code
-
-Once the .venv is created, you need to tell VS Code to use the Python interpreter from the .venv. You can do this by opening the command palette (Ctrl+Shift+P) and typing "Python: Select Interpreter". You should see an option that includes ".venv". If you renamed the project in the pyproject.toml file it will be called like (my-project-name) rather than (.venv). Select this option.
-
-You should now be in a position to run Python code in VS Code using the packages installed in the .venv.
-
-You can create a new python file by typing `code new-file.py` from your project folder and start writing code. If you use code fences like `# %%' you will get an [interactive notebook experience](https://code.visualstudio.com/docs/python/jupyter-support-py) where you can run a chunk at a time with CTRL+ENTER or SHIFT+ENTER or run the whole script.
-
-## Extensions
-Some recommended extensions are included in .vscode/extensions.json.
-
-Open the command palette (Ctrl+Shift+P) and type "Extensions: Install Extensions". Click the Funnel in the search extension bar and select "Recommended". This will show the extensions listed in .vscode/extensions.json. Click "Install All" to install them.
+## Stretch Goals (after completion) 
+* **API function:** Move from downloaded data programme to one based on APIs to allow for easier process of updating year-on-year
+* **Interactive Dashboard:** Build a simple online dashbaord sumamrisng data using Plotly Dash or Streamlit
+* **Benchmarking** Add data from other Combined Authorities (potentially doing this already to some extent) to provide a national comparative context. 
+* **Automated refresh:** Implement a simple Python scheduler to run the entire analysis pipeline yearly when BRES data is updated (potentialyl needing API work as crucial to this)

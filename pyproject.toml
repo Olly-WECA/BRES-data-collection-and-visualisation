@@ -12,6 +12,7 @@ dependencies = [
     "plotly",
     "pyyaml",
     "pyarrow",
+    "pandas>=2.3.3",
 ]
 
 [dependency-groups]
