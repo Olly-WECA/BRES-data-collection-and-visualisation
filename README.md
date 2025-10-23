@@ -11,15 +11,14 @@
 *Goal: Get environment, tools and foundational knowledge ready for Polars + Plotly.*
 
 ### Tasks and Checklist
-|Week  |Task| Status 
-**week1**
-|Week 1| Install Python, VS Code and set up Git + GitHub.| |
-|Week 1| Create Project project folder: 'bres-analysis/' with subfolders ('data/', 'scripts/', 'output/', etc.).| |
-|Week 1| **Install core libraries:** 'pip install polar plotly jupyterlap openpyxl python-pptx'| |
-**week2**
-|week 2| **Polars Practice:** In a Jupyter Notebook, practice importing a sample CSV/Excel file. | |
-|week 2| Use Polars syntax for **filtering, grouping, and aggregating** data. | |
-|week 2| **Plotly Practice:** Create a simple interactive Plotly Express chart (e.g., a bar chart or line plot). | | 
+| Week | Task | Status |
+| :--- | :--- | :---: |
+| Week 1 | Install Python, VS Code and set up Git + GitHub. | Done |
+| Week 1 | Create Project project folder: 'bres-analysis/' with subfolders ('data/', 'scripts/', 'output/', etc.). | In Progress |
+| Week 1 | Install core libraries: 'pip install polar plotly jupyterlap openpyxl python-pptx' | To Do |
+| Week 2 | Polars Practice: In a Jupyter Notebook, practice importing a sample CSV/Excel file. | To Do |
+| Week 2 | Use Polars syntax for filtering, grouping, and aggregating data. | To Do |
+| Week 2 | Plotly Practice: Create a simple interactive Plotly Express chart (e.g., a bar chart or line plot). | To Do |
 
 ### Expected Output
 * A functional Python development environment with the core libraries installed. 
@@ -29,15 +28,14 @@
 * Goal: Load and explore the real BRES 2024 data and merge it with Lightcast data.*
 
 ### Tasks & Checklist
-|Week  |Task| Status 
-**week 3**
-|week 3| **Data Download:** Download BRES 2024 data (from Nomis or ONS, dpeending on which leaves more flexibility for automating process once complete) and save raw files in 'data/raw'. | |
-|week 3| **Cleaning Script:** Begin 'scripts/clean_bres.py'. Use **Polars** to read the file, rename key columns (for consistency), filter the data to the West of England region, and inspect data types. | |
-|week 3| **Geographic mapping:** Document the geographical codes (or names) needed for the West of England CA and its unitary authorities (+ N Somerset) | |
-**week 4**
-|week 4| **Data Join:** Import Lightcast job posting data and write a Polars script to join it with cleaned BRES data (need to be xplored further, LLMs recommend using SIC coddes, but might not be a possible route with job posting data) | |
-|week 4| **Replicate Chart:** Use the combined dataset to recreate a simple chart from the Insight Pack (e.g, "Number of jobs by area") using **Plotly Express** | |
-|week 4| **Export test:** Export the Plotly chart as both interactive HTML file and a static PNG file. | |
+| Week | Task | Status |
+| :--- | :--- | :--- |
+| **Week 3** | **Data Download:** Download BRES 2024 data (from Nomis or ONS, depending on which leaves more flexibility for automating process once complete) and save raw files in 'data/raw'. | To Do |
+| **Week 3** | **Cleaning Script:** Begin 'scripts/clean_bres.py'. Use **Polars** to read the file, rename key columns (for consistency), filter the data to the West of England region, and inspect data types. | To Do |
+| **Week 3** | **Geographic mapping:** Document the geographical codes (or names) needed for the West of England CA and its unitary authorities (+ N Somerset). | To Do |
+| **Week 4** | **Data Join:** Import Lightcast job posting data and write a Polars script to join it with cleaned BRES data (need to be explored further, LLMs recommend using SIC codes, but might not be a possible route with job posting data). | To Do |
+| **Week 4** | **Replicate Chart:** Use the combined dataset to recreate a simple chart from the Insight Pack (e.g, "Number of jobs by area") using **Plotly Express**. | To Do |
+| **Week 4** | **Export test:** Export the Plotly chart as both interactive HTML file and a static PNG file. | To Do |
 
 ### Expected Outcome
 * Cleaned and documented Polars dataframe from BRES 2024 data (to be reviewed if taking API approach)
@@ -51,16 +49,12 @@
 
 
 ### Tasks & Checklist 
-|Week  |Task| Status 
-**week 5**
-|week 5|**Analysis Utilities:** Create 'scripts/analysis_utils.py'. | |
-|week 5| Write a function to *filter by industry (SIC code)** and return a summary Polars DataFrame ready for plotting. | |
-**week 6**
-|week 6| **Plotting Functions:** Create Plotly functions to automate the key chart types for *all* industries: | |
-| | 1. Full-time vs Part-time Split Bar Chart | |
-| | 2. Employment Trend Over Time Line Chart (Regional vs. National) | |
-| | 3. Top 20 Sub-Industries Bar Chart (using SIC codes) | |
-|week 6| Run the analysis and function for 3-4 sectors (potentailly growth sectors)
+| Week | Task | Status |
+| :--- | :--- | :--- |
+| **Week 5** | **Analysis Utilities:** Create 'scripts/analysis\_utils.py'. | To Do |
+| **Week 5** | Write a function to *filter by industry (SIC code)* and return a summary Polars DataFrame ready for plotting. | To Do |
+| **Week 6** | **Plotting Functions:** Create Plotly functions to automate the key chart types for *all* industries: <br> 1. Full-time vs Part-time Split Bar Chart <br> 2. Employment Trend Over Time Line Chart (Regional vs. National) <br> 3. Top 20 Sub-Industries Bar Chart (using SIC codes) | To Do |
+| **Week 6** | Run the analysis and function for 3-4 sectors (potentially growth sectors). | To Do |
 
 ### Expected Output
 * A modular Python file ('analysis_utils.py') with reusable Polars functions. 
@@ -72,15 +66,14 @@
 
 ### Tasks & Checklist
 
-|Week  |Task| Status 
-**week 7**
-|week 7| **Presentation Automation:** Use 'python-pptx' to build a slide deck. | |
-|week 7| Programatically insert exported charts/tables into the PowerPoint slides, following agreed structure of the Insight Pack. | |
-|week 7| Generate a text summary (Markdown or Jupyter Notebook) of the key headlines for each industry. | |
-** week 8**
-|week 8| **Final Review:** Review output with colleagues. | |
-|week 8| **Documentation:** Update this 'README.md' and add comments to code for clarity and future maintenance. | |
-|week 8+| Begin exploring Plotly Dash or Streamlit or other route to publish further interactive work and/or dashboard on *quarto* or other publishable programme | |
+| Week | Task | Status |
+| :--- | :--- | :--- |
+| **Week 7** | **Presentation Automation:** Use 'python-pptx' to build a slide deck. | To Do |
+| **Week 7** | Programmatically insert exported charts/tables into the PowerPoint slides, following agreed structure of the Insight Pack. | To Do |
+| **Week 7** | Generate a text summary (Markdown or Jupyter Notebook) of the key headlines for each industry. | To Do |
+| **Week 8** | **Final Review:** Review output with colleagues. | To Do |
+| **Week 8** | **Documentation:** Update this 'README.md' and add comments to code for clarity and future maintenance. | To Do |
+| **Week 8+** | Begin exploring Plotly Dash or Streamlit or other route to publish further interactive work and/or dashboard on *quarto* or other publishable programme. | To Do |
 
 ### Expected Output 
 * A prototype automated PowerPoint deck with refreshed BRES-Lightcast visuals.
