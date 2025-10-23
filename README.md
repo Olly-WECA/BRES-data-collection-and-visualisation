@@ -16,7 +16,7 @@
 | Week 1 | Install Python, VS Code and set up Git + GitHub. | Done |
 | Week 1 | Create Project project folder: 'bres-analysis/' with subfolders ('data/', 'scripts/', 'output/', etc.). | Done |
 | Week 1 | Install core libraries: 'pip install polar plotly jupyterlap openpyxl python-pptx' | Done |
-| Week 2 | Polars Practice: In a Jupyter Notebook, practice importing a sample CSV/Excel file. | DOne |
+| Week 2 | Polars Practice: In a Jupyter Notebook, practice importing a sample CSV/Excel file. | Done |
 | Week 2 | Use Polars syntax for filtering, grouping, and aggregating data. | Done |
 | Week 2 | Plotly Practice: Create a simple interactive Plotly Express chart (e.g., a bar chart or line plot). | To Do |
 
