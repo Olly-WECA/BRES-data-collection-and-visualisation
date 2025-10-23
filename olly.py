@@ -1,4 +1,4 @@
-# %% [Cell 1: Final Robust Import with Error Handling]
+# %% [Cell 1: Import Polars and define file path]
 
 import polars as pl
 import io
@@ -6,6 +6,7 @@ import io
 # Define the file path
 FILE_PATH = 'data/BRES2023_practice.csv' 
 
+# %% [Cell 2: Robust data loading and preparation]
 # Define the columns that contain the employment COUNT data (these MUST be strings first)
 # These are the even-numbered columns starting from column_2
 SCHEMA_OVERRIDES = {
@@ -44,7 +45,7 @@ except Exception as e:
     print(f"\nERROR: Final attempt failed.")
     print(f"Details: {e}")
 
-# %% [Cell 2: Cleaning and Formatting]
+# %% [cell 3: Cleaning and Formatting]
 
 # Map the default Polars column names (based on index) to the final clean names.
 # NOTE: The column indices are shifted by one because Polars dropped column_0.
@@ -56,37 +57,34 @@ EXPLICIT_RENAME_MAP = {
     'column_8': 'North_Somerset',      
     'column_10': 'South_Gloucestershire', 
 }
-# %%
+# %% [cell 4:Renaming and polars chaning cleaning data]
 COLS_TO_KEEP = list(EXPLICIT_RENAME_MAP.values())
 
 
 # 1. Rename the main data columns
 # df comes from Cell 1, which now has string types for the count columns
+# rename, define which columns and data to drop with null values
 df_cleaned = (df.rename(EXPLICIT_RENAME_MAP)
                 .select(COLS_TO_KEEP)
                 .drop_nulls(subset=["Industry"]))
 
-# %%
-# 2. Select ONLY the columns we want to keep (dropping empty columns)
-# df_cleaned = df_cleaned.select(COLS_TO_KEEP)
-
+# %% [cell 5: Clean numeric columns]
 
 # 3. Clean numeric columns (remove commas/non-numeric characters and cast to Int32)
 COUNT_COLS = COLS_TO_KEEP[1:] 
 
-#%%
-# 4. Drop rows where 'Industry' is null (removes footers/empty lines)
-# df_cleaned = df_cleaned.drop_nulls(subset=["Industry"])
-
+#%% [cell 6: Display results and show successful data clean so far]
 
 # Display the results
 print("DataFrame after cleaning steps:")
 print(df_cleaned.head(10))
 print("\nNew Polars DataFrame Schema:")
 print(df_cleaned.schema)
-# %% [Cell 3: Final Robust Casting and Cleaning]
 
-# NOTE: This cell uses df_cleaned from Cell 2
+
+# %% [Cell 7: Final Robust Casting and Cleaning]
+
+# NOTE: This cell uses df_cleaned from Cell 4
 
 # Identify the employment count columns for cleaning
 COUNT_COLS = df_cleaned.columns[1:] 
